@@ -1,0 +1,35 @@
+[project]
+name = "keri-essr-simple-request-response"
+version = "0.0.1"
+description = "A simple RACK/ESSR server exposing a website fetching tool"
+readme = "README.md"
+requires-python = ">=3.13"
+authors = [{ name = "healthKERI, Inc." }]
+maintainers = [
+    { name = "Phil Feairheller", email = "phil@healthKERI.com" },
+    { name = "Ari Argoud", email = "ari@healthKERI.com" },
+]
+keywords = ["rack", "keri", "essr", "web", "fetch"]
+license = { text = "MIT" }
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.13",
+]
+dependencies = ["anyio>=4.5", "click>=8.1.0", "kessr>=0.0.2"]
+
+[project.scripts]
+simple-request-response = "keri_essr_simple_request_response.server:main"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+ignore = []
+
+[tool.ruff]
+line-length = 88
+target-version = "py313"
+
+[tool.uv]
+dev-dependencies = ["pytest>=8.3.3", "ruff>=0.6.9"]

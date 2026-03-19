@@ -1,0 +1,62 @@
+# $ python setup.py register sdist upload
+
+# First Time register project on pypi
+# https://pypi.org/manage/projects/
+#
+#
+# Pypi Release
+# $ pip3 install twine
+#
+# $ python3 -m build
+# $ twine upload dist/*
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kept"
+version = "0.0.1"
+description = "KERI/ESSR Protected TCP."
+readme = "README.md"
+requires-python = ">=3.12.9"
+authors = [
+    {name = "Phil Feairheller", email = "phil@healthKERI.com"},
+    {name = "Ari Argoud", email = "ari@healthKERI.com"}
+]
+
+dependencies = [
+    "keri~=1.3.4",
+    "multicommand>=1.0.0",
+    'cbor>=1.0.0',
+    'prometheus-client>=0.22.1',
+    'httpx>=0.28.1',
+    "mcp>=1.12.2",
+]
+
+[dependency-groups]
+dev = [
+]
+test = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=1.1.0",
+    "pytest-cov>=4.0.0",
+    "pytest-mock>=3.10.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/healthKERI/kept"
+
+[project.scripts]
+kurl = "kept.app.cli.keeper:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["*"]
+
+[tool.setuptools.package-dir]
+"" = "src"
+
+[tool.pytest.ini_options]
+pythonpath = ["src", "."]
+
